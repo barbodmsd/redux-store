@@ -4,17 +4,17 @@ import { addItem, clear, removeItem } from "../../Store/Slices/Cart";
 
 export default function Cart() {
   const { list } = useSelector((state) => state.cartSlice);
+  const quantity=useSelector((state)=>state.cartSlice.quantity)
   const dispatch = useDispatch();
-
   let totalPrice = 0;
   const items = list?.map((e, index) => {
     totalPrice += e.price * e.quantity;
     return (
       <tr key={index}>
         <td>{index + 1}</td>
-        <td>{e.name}</td>
+        <td>{e.title}</td>
         <td>
-          <img src={e.image} />
+          <img src={e.image} style={{width:'60px',height:'60px'}} />
         </td>
         <td>{e.price}</td>
         <td>{e.quantity}</td>
@@ -22,7 +22,7 @@ export default function Cart() {
         <td>
           <button
             className="btn btn-danger mx-2 "
-            disabled={!quantity}
+            
             onClick={() => dispatch(removeItem(e.id))}
           >
             -
@@ -40,8 +40,8 @@ export default function Cart() {
   });
   return (
     <>
-      {list > 0 ? (
-        <table class="table">
+      {list.length > 0 ? (
+        <table className="table">
           <thead>
             <tr>
               <th scope="col">#</th>
