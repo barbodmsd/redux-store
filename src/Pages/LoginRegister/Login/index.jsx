@@ -1,9 +1,26 @@
 import React from "react";
 import useForm from "../../../Utils/useForm";
+import { useDispatch, useSelector } from "react-redux";
+import { login } from "../../../Store/Slices/Auth";
 
 export default function Login({ handlePageType }) {
   const [fields, handleChange] = useForm();
-
+  const {token}=useSelector(state=>state.authSlice)
+  const dispatch=useDispatch()
+const handleSubmit= async(e)=>{
+  e.preventDefault()
+  try {
+    const res=await fetch('https://fakestoreapi.com/auth/login',{
+      method:'POST',
+      headers:{'content-type':'application/json'},
+      body:JSON.stringify(fields)
+    })
+    const data=await res.json()
+    dispatch(login(data.token))
+  } catch (error) {
+    alert('Error fetching login form')
+  }
+}
   return (
     <form>
       <div className="mb-3">
