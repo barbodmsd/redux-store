@@ -1,6 +1,9 @@
 import React from "react";
+import useForm from "../../../Utils/useForm";
 
 export default function Login({ handlePageType }) {
+  const [fields, handleChange] = useForm();
+
   return (
     <form>
       <div className="mb-3">
@@ -8,6 +11,8 @@ export default function Login({ handlePageType }) {
           Username
         </label>
         <input
+        name="username"
+        onChange={handleChange}
           type="text"
           className="form-control"
           id="exampleInputEmail1"
@@ -22,6 +27,8 @@ export default function Login({ handlePageType }) {
           Password
         </label>
         <input
+        name="password"
+        onChange={handleChange}
           type="password"
           className="form-control"
           id="exampleInputPassword1"
@@ -31,7 +38,9 @@ export default function Login({ handlePageType }) {
       <button type="submit" className="btn btn-primary">
         Submit
       </button>
-      
+      <button className="btn btn-success " onClick={handlePageType}>
+        Don't have an Account?
+      </button>
     </form>
   );
 }
