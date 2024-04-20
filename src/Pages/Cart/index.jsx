@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addItem, removeItem } from "../../Store/Slices/Cart";
+import { addItem, clear, removeItem } from "../../Store/Slices/Cart";
 
 export default function Cart() {
   const { list } = useSelector((state) => state.cartSlice);
@@ -39,19 +39,39 @@ export default function Cart() {
     );
   });
   return (
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">Name</th>
-          <th scope="col">Image</th>
-          <th scope="col">Price</th>
-          <th scope="col">Quantity</th>
-          <th scope="col">Total Price</th>
-          <th scope="col">Add/Remove</th>
-        </tr>
-      </thead>
-      <tbody>{items}</tbody>
-    </table>
+    <>
+      {list > 0 ? (
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Name</th>
+              <th scope="col">Image</th>
+              <th scope="col">Price</th>
+              <th scope="col">Quantity</th>
+              <th scope="col">Total Price</th>
+              <th scope="col">Add/Remove</th>
+            </tr>
+          </thead>
+          <tbody>{items}</tbody>
+          <tfoot>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>Total Price</td>
+              <td>{totalPrice}</td>
+            </tr>
+          </tfoot>
+          <button className="btn btn-danger " onClick={() => dispatch(clear())}>
+            Clear Cart
+          </button>
+        </table>
+      ) : (
+        <h2>Cart id Empty</h2>
+      )}
+    </>
   );
 }
