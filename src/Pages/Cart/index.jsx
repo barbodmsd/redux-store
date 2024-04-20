@@ -17,7 +17,7 @@ export default function Cart() {
         <td>{e.title}</td>
         <td>{e.price}</td>
         <td>{e.quantity}</td>
-        <td>{totalPrice}</td>
+        <td>{e.price * e.quantity}</td>
         <td>
           <button
             className="btn btn-danger mx-2 "
