@@ -28,11 +28,12 @@ export default function App() {
             path="'/cart"
             element={token ? <Cart /> : <Navigate to={"/login-register"} />}
           />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
 
       <Footer />
-      <Route path="*" element={<NotFound />} />
+      
     </>
   );
 }

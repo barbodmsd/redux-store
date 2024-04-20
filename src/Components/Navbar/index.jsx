@@ -50,7 +50,7 @@ export default function Navbar() {
               </li>
             )}
           </ul>
-          <Link to={'/cart'}><h2>Cart {listLength&&listLength}</h2></Link>
+          <Link to={'/cart'}><h2>Cart {listLength>0&&listLength}</h2></Link>
         </div>
       </div>
     </nav>
