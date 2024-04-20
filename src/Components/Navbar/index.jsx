@@ -5,6 +5,7 @@ import { logout } from "../../Store/Slices/Auth";
 
 export default function Navbar() {
   const { token } = useSelector((state) => state.authSlice);
+  const listLength = useSelector((state) => state.cartSlice.list).length;
   const dispatch = useDispatch();
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -49,6 +50,7 @@ export default function Navbar() {
               </li>
             )}
           </ul>
+          <Link to={'/cart'}><h2>Cart {listLength&&listLength}</h2></Link>
         </div>
       </div>
     </nav>
