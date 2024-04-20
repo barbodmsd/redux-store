@@ -1,3 +1,9 @@
 .footerContainer {
   height: 150px;
+  background-color: gainsboro;
+}
+
+.footerContainer h2{
+    font-size: 2rem;
+    color: blueviolet;
 }
