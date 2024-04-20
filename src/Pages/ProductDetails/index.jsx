@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-
+import style from './ProductDetails.module.css'
 export default function ProductDetails() {
   const { id } = useParams();
   const [product, setProduct] = useState();
@@ -20,7 +20,7 @@ export default function ProductDetails() {
     })();
   }, [id]);
   return (
-    <div className="card mb-3" >
+    <div className={`card mb-3 ${style.cardDetailsContainer} `}>
       <div className="row g-0">
         <div className="col-md-4">
           <img src={product.image} className="img-fluid rounded-start" alt={product.title} />

@@ -1,0 +1,13 @@
+.cardDetailsContainer {
+  width: 80vh !important;
+  height: 500px !important;
+}
+.cardDetailsContainer img {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.cardDetailsContainer >div{
+    width: 50% !important;
+    height: 100% !important;
+}
