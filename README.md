@@ -1,3 +1,3 @@
 This project just for self practice.
-Redux
+Used Redux
  
