@@ -16,7 +16,7 @@ export default function Products() {
         const data = await res.json();
         setProducts(data);
       } catch (error) {
-        alert(error);
+        alert('Error Products Fetch');
       }
     })();
   }, []);
