@@ -1,11 +1,10 @@
 import React from "react";
 import useForm from "../../../Utils/useForm";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { login } from "../../../Store/Slices/Auth";
 
 export default function Login({ handlePageType }) {
   const [fields, handleChange] = useForm();
-  const {token}=useSelector(state=>state.authSlice)
   const dispatch=useDispatch()
 const handleSubmit= async(e)=>{
   e.preventDefault()
@@ -22,7 +21,7 @@ const handleSubmit= async(e)=>{
   }
 }
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <div className="mb-3">
         <label htmlFor="exampleInputEmail1" className="form-label">
           Username
