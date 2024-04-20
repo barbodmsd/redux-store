@@ -15,6 +15,7 @@ const handleSubmit= async(e)=>{
       body:JSON.stringify(fields)
     })
     const data=await res.json()
+    alert('Login successfully')
     dispatch(login(data.token))
   } catch (error) {
     alert('Error fetching login form')
