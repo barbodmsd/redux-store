@@ -22,5 +22,17 @@ const cartSlice = createSlice({
         return true;
       });
     },
+    addItem: (state, action) => {
+      state.list = state.list?.map((e) => {
+        if (e.id === action.payload.id) {
+          e.quantity = e.quantity + 1;
+          return e;
+        }
+        return e;
+      });
+      state.list.push({ ...action.payload, quantity: 1 });
+    },
   },
 });
+export const {clear,addItem,removeItem}=cartSlice.actions
+export default cartSlice.reducer 
