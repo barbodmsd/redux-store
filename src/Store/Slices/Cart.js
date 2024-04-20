@@ -23,14 +23,18 @@ const cartSlice = createSlice({
       });
     },
     addItem: (state, action) => {
+        let add=false
       state.list = state.list?.map((e) => {
         if (e.id === action.payload.id) {
           e.quantity = e.quantity + 1;
+          add=true
           return e;
         }
         return e;
       });
-      state.list.push({ ...action.payload, quantity: 1 });
+      if(!add){
+        state.list.push({ ...action.payload, quantity: 1 });
+      }
     },
   },
 });

@@ -2,10 +2,14 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import style from "./ProductDetails.module.css";
 import Loading from "../../Components/Loading";
+import { useDispatch, useSelector } from "react-redux";
+import { addItem, removeItem } from "../../Store/Slices/Cart";
 export default function ProductDetails() {
   const { id } = useParams();
   const [product, setProduct] = useState();
   const navigate = useNavigate();
+  const dispatch=useDispatch()
+  const quantity=useSelector(state=>state.cartSlice.list)?.filter(e=>e.id==id)[0]?.quantity
   useEffect(() => {
     (async () => {
       try {
@@ -41,8 +45,9 @@ export default function ProductDetails() {
                   {product.description}
                   <br />
                 <strong>  Price : {product.price}</strong>
-                <button className="btn btn-danger" onClick={()=>}></button>
-                <button className="btn btn-danger" onClick={()=>}></button>
+                <button className="btn btn-danger mx-2 " disabled={!quantity} onClick={()=>dispatch(removeItem(product.id))}>-</button>
+                {quantity&&<span>{quantity}</span>}
+                <button className="btn btn-success mx-2 " onClick={()=>dispatch(addItem(product))}>+</button>
                 </p>
                 <p className="card-text">
                   <small className="text-body-secondary">
