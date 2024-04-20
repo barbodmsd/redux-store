@@ -1,0 +1,8 @@
+.cardContainer{
+    width: 300px !important;
+    height: 400px  !important;
+}
+.cardContainer img{
+    width: 100% !important;
+    height: 40% !important;
+}
