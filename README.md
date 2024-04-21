@@ -1,2 +1,2 @@
-This project just for self practice.
+This project is for personal practice only.
 Used Redux.
